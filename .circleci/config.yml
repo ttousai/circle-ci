@@ -24,3 +24,10 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: go get -v -t -d ./...
       - run: go test -v ./...
+      - deploy:
+        name: Trigger Docker hub build
+        command: |
+        curl -H "Content-Type: application/json" -X POST \
+          --data '{"source_type": "Branch", "source_name": "staging"}' \
+          https://registry.hub.docker.com/u/ttousai/circle-ci-test/trigger/4a2be49a-51d1-45ef-b8ae-fe5183073629/
+

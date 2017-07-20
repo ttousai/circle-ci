@@ -35,5 +35,7 @@ jobs:
       - deploy:
           name: Trigger Docker hub build
           command: |
+            sed -i "s/image: circle-ci-test/image: circle-ci-test:$TAG/" deployment.yaml
+
             cat deployment.yaml | ssh -o StrictHostKeyChecking=no admin@54.158.115.114 \
               kubectl --context=ctl.us-east-1.dev.magalix.org apply -f -

@@ -7,8 +7,6 @@ jobs:
     docker:
       # specify the version
       - image: circleci/golang:1.8
-
-      - setup_remote_docker
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -22,6 +20,8 @@ jobs:
     working_directory: /go/src/github.com/ttousai/circle-ci
     steps:
       - checkout
+
+      - setup_remote_docker
 
       # specify any bash command here prefixed with `run: `
       - run: go get -v -t -d ./...

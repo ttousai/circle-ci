@@ -36,4 +36,4 @@ jobs:
           name: Trigger Docker hub build
           command: |
             cat deployment.yaml | ssh -o StrictHostKeyChecking=no admin@54.158.115.114 \
-              kubectl --context=ctl.us-east-1.dev.magalix.org create -f -
+              kubectl --context=ctl.us-east-1.dev.magalix.org apply -f -

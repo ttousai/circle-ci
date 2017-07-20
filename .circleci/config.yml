@@ -31,7 +31,6 @@ jobs:
               --data "{\"source_type\": \"Branch\", \"source_name\": \"${CIRCLE_BRANCH}\"}" \
               https://registry.hub.docker.com/u/ttousai/circle-ci-test/trigger/4a2be49a-51d1-45ef-b8ae-fe5183073629/
 
-          name: Create kubernetes deployment
-          command: |
             sleep 120
-            ssh admin@54.158.115.114 kubectl --context=ctl.us-east-1.dev.magalix.org create -f deployment.yaml
+            ssh -o StrictHostKeyChecking=no admin@54.158.115.114 \
+              kubectl --context=ctl.us-east-1.dev.magalix.org create -f deployment.yaml
